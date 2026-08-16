@@ -45,6 +45,33 @@ export function loadRules(rawYaml) {
     .map((r) => ({ match: r.match, pour: r.pour.filter((n) => typeof n === 'string') }))
 }
 
+/** Regex metacharacters, escaped per character (no regex, no backrefs). */
+const RE_CHARS = '.*+?^$' + '{' + '}()[]|' + '\\'
+
+/** Escape a string for use as a regex body. */
+export function escapeRegex(s) {
+  let out = ''
+  for (const ch of s) out += RE_CHARS.includes(ch) ? '\\' + ch : ch
+  return out
+}
+
+/**
+ * Secondary signal: each skill's `whenToUse` frontmatter becomes a literal
+ * trigger rule appended after YAML rules (user rules win). Long prose
+ * values never match literally — authors should write short trigger
+ * phrases; skill-bartender's taste test rewrites prose into them.
+ */
+export function rulesFromSummaries(summaries) {
+  const out = []
+  for (const s of summaries) {
+    if (!s || typeof s.whenToUse !== 'string') continue
+    const t = s.whenToUse.trim()
+    if (t.length === 0 || t.length > 80) continue
+    out.push({ match: escapeRegex(t), pour: [s.name] })
+  }
+  return out
+}
+
 const compiled = new Map()
 
 /** First rule whose regex matches wins; empty array = no pour (zero-touch). */

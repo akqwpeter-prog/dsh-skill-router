@@ -1,6 +1,6 @@
 {
   "name": "dsh-skill-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pre-step skill router for DeepSeek Harness: rule-first task-to-skill matching that pours matched skill bodies only on high-confidence hits and stays silent otherwise. Companion to skill-bartender.",
   "type": "module",
   "main": "index.js",

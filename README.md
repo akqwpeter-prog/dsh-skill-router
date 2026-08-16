@@ -40,6 +40,10 @@ defaults and never breaks the session.
 - No auto-install of missing skills: that stays in skill-bartender's
   quarantine → SkillSpector → human-approval flow.
 - Rule table is data: improve matching by editing YAML, not code.
+- `whenToUse` frontmatter on installed skills acts as a secondary
+  trigger (literal phrase match, appended after YAML rules). Write it as
+  a short trigger phrase; long prose never matches. Today's skill data
+  mostly lacks the field — skill-bartender's taste test can backfill it.
 
 ## Tested
 
