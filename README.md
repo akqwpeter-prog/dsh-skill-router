@@ -1,5 +1,9 @@
 # dsh-skill-router 🍸→⚙️
 
+[![License](https://img.shields.io/github/license/akqwpeter-prog/dsh-skill-router)](LICENSE)
+[![Test CI](https://github.com/akqwpeter-prog/dsh-skill-router/actions/workflows/test.yml/badge.svg)](https://github.com/akqwpeter-prog/dsh-skill-router/actions/workflows/test.yml)
+[![dsh-plugin](https://img.shields.io/badge/topic-dsh--plugin-2ea44f)](https://github.com/topics/dsh-plugin)
+
 **Rule-first pre-step skill router for DeepSeek Harness.**
 
 Companion executor to [skill-bartender](https://github.com/akqwpeter-prog/skill-bartender):
