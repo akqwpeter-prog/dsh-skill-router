@@ -1,0 +1,15 @@
+name: test
+on:
+  push:
+  pull_request:
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save yaml
+      - run: node --check index.js && node --check policy.js
+      - run: node test/policy.unit.test.mjs
